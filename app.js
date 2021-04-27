@@ -73,3 +73,8 @@ function playerSwitch() {
     //Шоог түр алга болгоно
     diceDom.style.display = 'none';
 }
+
+// New game Event listener
+document.querySelector(".btn-new").addEventListener('click', function() {
+    
+})
