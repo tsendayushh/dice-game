@@ -39,7 +39,7 @@ document.querySelector('.btn-hold').addEventListener("click", function() {
         score[activePlayer] = score[activePlayer] + roundScore;
 
         //Тоглогч хожсон эмэхийг шалгах, хэрэв хожсон бол ХОЖСОН гэдгийг нэрнийх нь оронд үзүүлэх
-        if( score[activePlayer] >= 20 ) {
+        if( score[activePlayer] >= 100 ) {
             isGameOver = true;
             document.getElementById('name-' + activePlayer).textContent = 'WINNER WINNER CHICKEN DINNER!';
         }
