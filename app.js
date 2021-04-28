@@ -3,12 +3,14 @@ var diceDom = document.querySelector(".dice");
 
 // Тоглоом эхлэхэд гэрч ирэх 設定
 var activePlayer,score,roundScore;
+var isGameOver;
 initGame();
 
 
 // ----------Шоог шидэх event listener------------------------------------------------
 document.querySelector('.btn-roll').addEventListener("click", function() {
-
+    if(isGameOver === false) {
+        
     //Шоог хаяахад хэд буухыг хадгалах хувьсагч, 1-6 гэсэн утгыг санамсаргүйгээр оноох
     var diceNumber = Math.floor(Math.random()*6) + 1;
 
@@ -23,20 +25,34 @@ document.querySelector('.btn-roll').addEventListener("click", function() {
     } else {
         playerSwitch();
     }
+    }
+    else {
+        alert('Game is over you dumbass!\n if you want to play again click the New Game button!')
+    }
+
 });
 
 //-------------- Hold товчны eventListener-----------------------------------
 document.querySelector('.btn-hold').addEventListener("click", function() {
-    // Уг тоглогчийн ээлжиндээ цуглуулсан оноог Global оноон дээр нь нэмнэ
-    score[activePlayer] = score[activePlayer] + roundScore;
+    if (isGameOver === false) {
+        // Уг тоглогчийн ээлжиндээ цуглуулсан оноог Global оноон дээр нь нэмнэ
+        score[activePlayer] = score[activePlayer] + roundScore;
 
-    //Тоглогч хожсон эмэхийг шалгах, хэрэв хожсон бол ХОЖСОН гэдгийг нэрнийх нь оронд үзүүлэх
-    if( score[activePlayer] >= 100 ) document.getElementById('name-' + activePlayer).textContent = 'WINNER WINNER CHICKEN DINNER!';
+        //Тоглогч хожсон эмэхийг шалгах, хэрэв хожсон бол ХОЖСОН гэдгийг нэрнийх нь оронд үзүүлэх
+        if( score[activePlayer] >= 20 ) {
+            isGameOver = true;
+            document.getElementById('name-' + activePlayer).textContent = 'WINNER WINNER CHICKEN DINNER!';
+        }
     
-    //Тоглогчийн оноог дэлгэцэнд үзүүлэх
-    document.getElementById('score-' + activePlayer).textContent= score[activePlayer];
+        //Тоглогчийн оноог дэлгэцэнд үзүүлэх
+        document.getElementById('score-' + activePlayer).textContent= score[activePlayer];
 
-    playerSwitch();    
+        playerSwitch(); 
+    }
+    
+    else {
+        alert('Game is over you dumbass!\n if you want to play again click the New Game button!')
+    }  
 })
 
 //----------------- New game Event listener ------------------------------------
@@ -64,6 +80,9 @@ function playerSwitch() {
 }
 
 function initGame() {
+
+    // Тоглоом дуусаагүй байгааг илтгэх
+    isGameOver = false;
     //Тоглогчийн ээлжийг хадгалах хувьсагч. 1-р тоглогчийн 0, 2-р тоглогчийг 1 гэе.
     activePlayer = 0;
 
