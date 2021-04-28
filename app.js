@@ -1,5 +1,5 @@
 // Кодыг амархан мөн хурдөн болгохын тулд queryselector function -ийг объектэд оноож өгөв.
-var diceDom = document.querySelector(".dice");
+var diceDom = document.querySelector(".dice1");
 
 // Тоглоом эхлэхэд гэрч ирэх 設定
 var activePlayer,score,roundScore;
