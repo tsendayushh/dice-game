@@ -107,7 +107,7 @@ function initGame() {
 
     
     //Тоглогчийн нэр авах үйлдэл
-    document.getElementById('name-0').textContent= prompt('Тоглогч 1-ийн  нэрийг оруулна уу1');
+    document.getElementById('name-0').textContent= prompt('ホールドポイントが60以上になった側の勝ちです。\nТоглогч 1-ийн  нэрийг оруулна уу1');
     document.getElementById('name-1').textContent= prompt('Тоглогч 2-ийн  нэрийг оруулна уу1');
 
 }
